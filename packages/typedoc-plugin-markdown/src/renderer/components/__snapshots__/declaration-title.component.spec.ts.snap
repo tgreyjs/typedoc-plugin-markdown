@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Declaration Title Component should compile a const with default value 1`] = `"• **constWithDefaultValue**: \`\`\\"<foo>\\"\`\`"`;
+
+exports[`Declaration Title Component should compile a let with default value 1`] = `"• **letWithDefaultValue**: \`string\` = \`'hello'\`"`;
+
+exports[`Declaration Title Component should compile an undefined declaration 1`] = `"• **undefinedNumberDeclaration**: \`number\`"`;

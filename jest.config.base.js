@@ -4,9 +4,10 @@ module.exports = {
     '^.+\\.tsx?$': 'ts-jest',
   },
   verbose: true,
-  collectCoverage: false,
+  collectCoverage: true,
+
   coverageReporters: ['lcov', 'text', 'text-summary'],
-  collectCoverageFrom: ['<rootDir>/dist/**/*js'],
+  collectCoverageFrom: ['<rootDir>/src/**/*ts'],
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.test.json',

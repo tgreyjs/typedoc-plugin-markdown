@@ -1,6 +1,6 @@
-export const stringConstWithDefaultValue = 'hello';
-export let stringLetWithDefaultValue = 'hello';
-stringLetWithDefaultValue = 'world';
+export const constWithDefaultValue = '<foo>';
+export let letWithDefaultValue = 'hello';
+letWithDefaultValue = 'world';
 
 export let undefinedNumberDeclaration: number;
 

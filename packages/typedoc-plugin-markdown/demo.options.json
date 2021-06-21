@@ -1,7 +1,8 @@
 {
-  "entryPoints": ["./test/stubs/src/index.ts"],
+  "entryPoints": ["./test/stubs/src/declarations.ts"],
   "includes": "./test/stubs/inc/",
   "media": "./test/stubs/media/",
   "includeVersion": true,
-  "tsconfig": "./test/stubs/tsconfig.json"
+  "tsconfig": "./test/stubs/tsconfig.json",
+  "disableOutputCheck": true
 }

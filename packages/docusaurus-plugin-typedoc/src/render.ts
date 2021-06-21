@@ -41,10 +41,7 @@ export const bootstrap = (app: Application, opts: Partial<PluginOptions>) => {
 };
 
 async function render(project: ProjectReflection, outputDirectory: string) {
-  if (
-    !this.prepareTheme() ||
-    !isOutputDirectory(this.application, outputDirectory)
-  ) {
+  if (!this.prepareTheme()) {
     return;
   }
 
