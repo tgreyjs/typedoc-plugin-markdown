@@ -1,5 +1,8 @@
 {
-  "entryPoints": ["./test/stubs/src/index.ts"],
+  "entryPoints": [
+    "./test/stubs/src/categories.ts",
+    "./test/stubs/src/reflections.ts"
+  ],
   "includes": "./test/stubs/inc/",
   "media": "./test/stubs/media/",
   "includeVersion": true,

@@ -3,9 +3,10 @@ import * as path from 'path';
 
 import { Application, Converter, ParameterType, Renderer } from 'typedoc';
 
+import { render } from './renderer/render';
 import MarkdownTheme from './theme';
 
-export function load(app: Application) {
+export async function load(app: Application) {
   app.options.addDeclaration({
     help: '[Markdown Plugin] Do not render page title.',
     name: 'hidePageTitle',
@@ -21,23 +22,20 @@ export function load(app: Application) {
   });
 
   app.options.addDeclaration({
-    help:
-      '[Markdown Plugin] Specifies the base path that all links to be served from. If omitted all urls will be relative.',
+    help: '[Markdown Plugin] Specifies the base path that all links to be served from. If omitted all urls will be relative.',
     name: 'publicPath',
     type: ParameterType.String,
   });
 
   app.options.addDeclaration({
-    help:
-      '[Markdown Plugin] Use HTML named anchors as fragment identifiers for engines that do not automatically assign header ids. Should be set for Bitbucket Server docs.',
+    help: '[Markdown Plugin] Use HTML named anchors as fragment identifiers for engines that do not automatically assign header ids. Should be set for Bitbucket Server docs.',
     name: 'namedAnchors',
     type: ParameterType.Boolean,
     defaultValue: false,
   });
 
   app.options.addDeclaration({
-    help:
-      '[Markdown Plugin] Output all reflections into seperate output files.',
+    help: '[Markdown Plugin] Output all reflections into seperate output files.',
     name: 'allReflectionsHaveOwnDocument',
     type: ParameterType.Boolean,
     defaultValue: false,
@@ -73,6 +71,8 @@ export function load(app: Application) {
   app.converter.on(Converter.EVENT_BEGIN, () => {
     Renderer.getDefaultTheme = () => path.join(__dirname, 'resources');
   });
+
+  app.renderer.render = render;
 
   app.converter.on(Converter.EVENT_RESOLVE_BEGIN, () => {
     const themeName = app.options.getValue('theme');

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comments Component should allow html in comments' 1`] = `
+"<p>
+You can write <strong>HTML</strong> tags directly in <a href=\\"comments\\">comments</a>
+</p>
+<ul>
+<li>List item</li>
+</ul>"
+`;
+
+exports[`Comments Component should build @link reference' 1`] = `
+"- [\`CommentClass\`](../classes/comments.commentclass.md)
+- [CommentClass.comment](../classes/comments.commentclass.md#comment)
+- {@link unknownA}
+- [commentsInReturn](comments.md#commentsinreturn)
+- [Google](https://www.google.com)
+- [GitHub](https://github.com)"
+`;
+
+exports[`Comments Component should convert comments with tags' 1`] = `
+"**\`name\`** Tag description on same line
+
+**\`description\`**
+Tag description on new line
+
+- Tag description on another line
+
+
+**\`deprecated\`**
+Another tag description
+"
+`;
+
+exports[`Comments Component should convert symbols brackets to symbol links' 1`] = `
+"Additionally you can link to other classes, members or functions using double square brackets.
+
+- [CommentClass](../classes/comments.commentclass.md)
+- [commentsInReturn](comments.md#commentsinreturn)
+- [[unknownB]]
+"
+`;

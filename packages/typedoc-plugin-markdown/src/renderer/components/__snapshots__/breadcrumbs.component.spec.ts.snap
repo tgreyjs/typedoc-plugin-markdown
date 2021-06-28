@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs Component should compile breadcrumbs for a entrypoint' 1`] = `"Modules"`;
+
+exports[`Breadcrumbs Component should compile breadcrumbs for a module' 1`] = `"[Modules](../modules.md) / classes"`;
+
+exports[`Breadcrumbs Component should compile breadcrumbs for a reflection' 1`] = `"[Modules](../modules.md) / [classes](../modules/classes.md) / Point"`;

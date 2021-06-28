@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Member Component: should compile a const with default value 1`] = `
+"### constWithDefaultValue
+
+• \`Const\` **constWithDefaultValue**: \`\`\\"<foo>\\"\`\`
+
+[SOURCES]"
+`;
+
+exports[`Member Component: should compile a let with default value 1`] = `
+"### letWithDefaultValue
+
+• \`Let\` **letWithDefaultValue**: \`string\` = \`'hello'\`
+
+[SOURCES]"
+`;
+
+exports[`Member Component: should compile an undefined declaration 1`] = `
+"### undefinedNumberDeclaration
+
+• \`Let\` **undefinedNumberDeclaration**: \`number\`
+
+[SOURCES]"
+`;
+
+exports[`Member Component: should compile any function type 1`] = `
+"### AnyFunctionType
+
+Ƭ **AnyFunctionType**<\`A\`\\\\>: (...\`input\`: \`any\`[]) => \`A\`
+
+#### Type parameters
+
+
+| Name | Type |
+| :------ | :------ |
+| \`A\` | \`A\` = \`any\` |
+
+
+### Type declaration
+
+▸ (...\`input\`): \`A\`
+
+
+#### Parameters
+
+
+| Name | Type |
+| :------ | :------ |
+| \`...input\` | \`any\`[] |
+
+
+#### Returns
+
+\`A\`
+
+[SOURCES]
+
+[SOURCES]"
+`;
+
+exports[`Member Component: should compile callable declaration 1`] = `
+"### callableDeclaration
+
+• \`Let\` **callableDeclaration**: \`Object\`
+
+### Call signature
+
+▸ (\`someArg\`): \`boolean\`
+
+
+#### Parameters
+
+
+| Name | Type |
+| :------ | :------ |
+| \`someArg\` | \`number\` |
+
+
+#### Returns
+
+\`boolean\`
+
+[SOURCES]
+
+#### Type declaration
+
+
+| Name | Type |
+| :------ | :------ |
+| \`arg1\` | \`string\` |
+| \`arg2\` | \`number\` |
+
+
+[SOURCES]"
+`;
+
+exports[`Member Component: should compile declaration with double underscores in name and value 1`] = `
+"### \\\\_\\\\_DOUBLE\\\\_UNDERSCORES\\\\_DECLARATION\\\\_\\\\_
+
+• \`Const\` **\\\\_\\\\_DOUBLE\\\\_UNDERSCORES\\\\_DECLARATION\\\\_\\\\_**: typeof [\\\\_\\\\_DOUBLE\\\\_UNDERSCORES\\\\_DECLARATION\\\\_\\\\_](modules.md#__double_underscores_declaration__)
+
+[SOURCES]"
+`;
+
+exports[`Member Component: should compile enum delcaration 1`] = `
+"### EnumDeclarations
+
+• **EnumDeclarations**: \`Object\`
+
+[SOURCES]"
+`;
+
+exports[`Member Component: should compile function declaration 1`] = `
+"### functionDeclaration
+
+▸ \`Let\` **functionDeclaration**(\`someArg\`): \`boolean\`
+
+
+#### Parameters
+
+
+| Name | Type |
+| :------ | :------ |
+| \`someArg\` | \`number\` |
+
+
+#### Returns
+
+\`boolean\`
+
+[SOURCES]"
+`;
+
+exports[`Member Component: should compile indexable declaration 1`] = `
+"### indexableDeclaration
+
+• \`Let\` **indexableDeclaration**: \`Object\`
+
+#### Index signature
+
+▪ []: \`string\`
+
+#### Type declaration
+
+
+| Name | Type |
+| :------ | :------ |
+| \`arg1\` | \`string\` |
+
+
+[SOURCES]"
+`;
+
+exports[`Member Component: should compile object literal cast as a const 1`] = `
+"### objectLiteralAsConstDeclaration
+
+• \`Const\` **objectLiteralAsConstDeclaration**: \`Object\`
+
+Comments
+
+#### Type declaration
+
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| \`Prop1\` | \`\`\\"Prop1\\"\`\` | Comment for Prop1. |
+| \`Prop2\` | \`\`\\"Prop2\\"\`\` | Comment for Prop2. |
+| \`Prop3\` | \`\`\\"Prop3\\"\`\` | - |
+
+
+[SOURCES]"
+`;
+
+exports[`Member Component: should compile object literal declaration 1`] = `
+"### objectLiteralDeclaration
+
+• \`Const\` **objectLiteralDeclaration**: \`Object\`
+
+#### Type declaration
+
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| \`valueA\` | \`number\` | - |
+| \`valueB\` | \`boolean\` | - |
+| \`valueC\` | \`Object\` | - |
+| \`valueX\` | \`Object\` | description for valueX |
+| \`valueX.valueA\` | \`number\`[] | - |
+| \`valueX.valueZ\` | \`string\` | - |
+| \`valueY\` | () => \`string\` | description for valueY |
+| \`valueZ\` | \`string\` | description for valueZ |
+
+
+[SOURCES]"
+`;
+
+exports[`Member Component: should compile type literal declaration 1`] = `
+"### typeLiteralDeclaration
+
+• \`Let\` **typeLiteralDeclaration**: \`Object\`
+
+#### Type declaration
+
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| \`valueA?\` | \`number\` | Comments for valueA |
+| \`valueB?\` | \`boolean\` | - |
+| \`valueX\` | \`Object\` | Comment for valueX |
+| \`valueX.valueA\` | \`number\`[] | - |
+| \`valueX.valueY\` | (\`z\`: \`string\`) => { \`a\`: \`string\` ; \`b\`: \`string\`  } | - |
+| \`valueX.valueZ\` | \`string\` | Nested comment for valueZ |
+| \`valueY\` | () => \`string\` | - |
+| \`valueZ\` | \`string\` | Comment for valueZ |
+
+
+[SOURCES]"
+`;
