@@ -1,7 +1,5 @@
 import * as fs from 'fs';
 import * as path from 'path';
-
-import * as Handlebars from 'handlebars';
 import {
   BindOption,
   DeclarationReflection,
@@ -16,11 +14,6 @@ import { ReflectionKind } from 'typedoc/dist/lib/models';
 import { PageEvent } from 'typedoc/dist/lib/output/events';
 import { Theme } from 'typedoc/dist/lib/output/theme';
 import { TemplateMapping } from 'typedoc/dist/lib/output/themes/DefaultTheme';
-
-import { Breadcrumbs } from './components/breadcrumbs';
-import { Comments } from './components/comments';
-import { ContextAwareHelpers } from './components/options';
-import { TableOfContents } from './components/toc';
 
 /**
  * The MarkdownTheme is based on TypeDoc's DefaultTheme @see https://github.com/TypeStrong/typedoc/blob/master/src/lib/output/themes/DefaultTheme.ts.
@@ -39,9 +32,6 @@ export default class MarkdownTheme extends Theme {
   filenameSeparator!: string;
   @BindOption('entryDocument')
   entryDocument!: string;
-
-  // creates an isolated Handlebars environment to store context aware helpers
-  static HANDLEBARS = Handlebars.create();
 
   static URL_PREFIX = /^(http|ftp)s?:\/\//;
 
@@ -67,12 +57,6 @@ export default class MarkdownTheme extends Theme {
     renderer.removeComponent('marked-links');
     renderer.removeComponent('legend');
     renderer.removeComponent('navigation');
-
-    // add markdown related componenets / helpers
-    renderer.addComponent('options', new ContextAwareHelpers(renderer));
-    renderer.addComponent('breadcrumbs', new Breadcrumbs(renderer));
-    renderer.addComponent('comments', new Comments(renderer));
-    renderer.addComponent('toc', new TableOfContents(renderer));
   }
 
   /**
@@ -120,9 +104,10 @@ export default class MarkdownTheme extends Theme {
       urls.push(new UrlMapping(this.entryDocument, project, 'reflection.hbs'));
     } else {
       project.url = this.globalsFile;
-      urls.push(new UrlMapping(this.globalsFile, project, 'reflection.hbs'));
-      urls.push(new UrlMapping(this.entryDocument, project, 'index.hbs'));
+      urls.push(new UrlMapping(this.globalsFile, project, 'globals.hbs'));
+      urls.push(new UrlMapping(this.entryDocument, project, 'readme.hbs'));
     }
+
     project.children?.forEach((child: Reflection) => {
       if (child instanceof DeclarationReflection) {
         this.buildUrls(child as DeclarationReflection, urls);
@@ -237,12 +222,8 @@ export default class MarkdownTheme extends Theme {
       const navigationItem = new NavigationItem(title, url);
       navigationItem.isLabel = isLabel;
       navigationItem.children = children;
-      const {
-        reflection,
-        parent,
-        cssClasses,
-        ...filteredNavigationItem
-      } = navigationItem;
+      const { reflection, parent, cssClasses, ...filteredNavigationItem } =
+        navigationItem;
       return filteredNavigationItem as NavigationItem;
     };
     const navigation = createNavigationItem(project.name, undefined, false);
