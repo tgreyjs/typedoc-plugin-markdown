@@ -1,4 +1,5 @@
 import * as path from 'path';
+
 import * as tmp from 'tmp';
 import {
   Application,
@@ -8,6 +9,7 @@ import {
   TSConfigReader,
 } from 'typedoc';
 import { PageEvent } from 'typedoc/dist/lib/output/events';
+
 import { getUrls } from '../src/renderer/render';
 import { setDefaultState, setState } from '../src/renderer/store';
 
@@ -34,6 +36,7 @@ export class TestApp {
   async bootstrap(options: any = {}) {
     this.app.bootstrap({
       entryPoints: this.entryPoints,
+      logger: 'none',
       plugin: [path.join(__dirname, '../dist/index')],
       tsconfig: path.join(__dirname, 'stubs', 'tsconfig.json'),
       ...options,

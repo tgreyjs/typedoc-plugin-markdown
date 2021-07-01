@@ -30,8 +30,8 @@ export function SignatureTitleComponent(
 
   if (model.typeParameters) {
     md.push(
-      `<${model.typeParameters
-        .map((typeParameter) => typeParameter.name)
+      `<${this.typeParameters
+        .map((typeParameter) => `\`${typeParameter.name}\``)
         .join(', ')}\\>`,
     );
   }

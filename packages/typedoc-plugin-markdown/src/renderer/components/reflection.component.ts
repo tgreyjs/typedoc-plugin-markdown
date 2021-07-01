@@ -1,8 +1,10 @@
 import { DeclarationReflection } from 'typedoc';
+
 import { MarkdownBuilder } from '../../markdown-tools/builder';
 import { heading, unorderedList } from '../../markdown-tools/elements';
 import { CommentsComponent } from './comments.component';
 import { GroupsComponent } from './groups.component';
+import { SignatureComponent } from './member.signature';
 import { HierarchyComponent } from './reflection.hierachy';
 import { TocComponent } from './toc.component';
 import { TypeComponent } from './type';
@@ -40,6 +42,7 @@ export function ReflectionComponent(model: DeclarationReflection) {
     md.add(heading(2, 'Callable'));
     model.signatures.forEach((signature) => {
       md.add(heading(3, signature.name));
+      md.add(SignatureComponent(signature));
     });
   }
 
@@ -48,5 +51,6 @@ export function ReflectionComponent(model: DeclarationReflection) {
   if (model.groups) {
     md.add(GroupsComponent(model.groups));
   }
+
   return md.print();
 }

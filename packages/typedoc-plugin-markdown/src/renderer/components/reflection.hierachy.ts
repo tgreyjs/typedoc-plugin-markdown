@@ -12,7 +12,7 @@ function hierarchy(model: DeclarationHierarchy, level = 0) {
   const symbol = level > 0 ? getSymbol(level) : '-';
   model.types.forEach((hierarchyType) => {
     if (model.isTarget) {
-      md.push(`${symbol} **${hierarchyType}**`);
+      md.push(`${symbol} **\`${hierarchyType}\`**`);
     } else {
       md.push(`${symbol} ${TypeComponent(hierarchyType)}`);
     }

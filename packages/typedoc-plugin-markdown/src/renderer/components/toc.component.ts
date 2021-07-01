@@ -14,24 +14,27 @@ export function TocComponent(model: ProjectReflection | DeclarationReflection) {
   const { options } = useState();
 
   const md = new MarkdownBuilder();
-
-  if (!options.hideInPageTOC) {
-    md.add(heading(2, 'Table of contents'));
+  const isVisible = model.groups?.some((group) =>
+    group.allChildrenHaveOwnDocument(),
+  );
+  if ((!this.hideInPageTOC && model.groups) || (isVisible && model.groups)) {
+    if (!options.hideInPageTOC) {
+      md.add(heading(2, 'Table of contents'));
+    }
+    model.groups
+      ?.filter(
+        (group) => !options.hideInPageTOC || group.allChildrenHaveOwnDocument(),
+      )
+      .forEach((group) => {
+        if (group.categories) {
+          group.categories.forEach((category) => {
+            md.add(getGroup(category, category.title + ' ' + group.title));
+          });
+        } else {
+          md.add(getGroup(group, group.title));
+        }
+      });
   }
-
-  model.groups
-    ?.filter(
-      (group) => !options.hideInPageTOC || group.allChildrenHaveOwnDocument(),
-    )
-    .forEach((group) => {
-      if (group.categories) {
-        group.categories.forEach((category) => {
-          md.add(getGroup(category, category.title + ' ' + group.title));
-        });
-      } else {
-        md.add(getGroup(group, group.title));
-      }
-    });
 
   return md.print();
 }

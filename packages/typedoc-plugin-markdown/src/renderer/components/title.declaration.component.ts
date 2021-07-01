@@ -23,7 +23,7 @@ export function DeclarationTitleComponent(
   md.add(`${model.flags.isRest ? '... ' : ''} **${escapeChars(model.name)}**`);
   if (model instanceof DeclarationReflection && model.typeParameters) {
     md.add(
-      `<${model.typeParameters
+      `<${this.typeParameters
         .map((typeParameter) => `\`${typeParameter.name}\``)
         .join(', ')}\\>`,
     );
@@ -38,7 +38,9 @@ export function DeclarationTitleComponent(
     model.defaultValue &&
     model.defaultValue !== '...'
   ) {
-    md.add(` = \`${stripLineBreaks(stripComments(model.defaultValue))}\``);
+    md.add(
+      ` = \`${stripLineBreaks(escape(stripComments(this.defaultValue)))}\``,
+    );
   }
   return md.print('');
 }
