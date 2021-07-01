@@ -84,7 +84,7 @@ export const objectLiteralAsConstDeclaration = {
   Prop3: 'Prop3',
 } as const;
 
-export const __DOUBLE_UNDERSCORES_DECLARATION__ = Symbol.for('__type__');
+export const __DOUBLE_UNDERSCORES_DECLARATION__ = true;
 
 export type AnyFunctionType<A = any> = (...input: any[]) => A;
 
