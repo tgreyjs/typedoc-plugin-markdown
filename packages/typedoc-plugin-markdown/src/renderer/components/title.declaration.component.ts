@@ -8,7 +8,7 @@ import {
 import { MarkdownBuilder } from '../../markdown-tools/builder';
 import { escapeChars, stripComments, stripLineBreaks } from '../utils';
 import { MemberSymbolComponent } from './member-symbol';
-import { TypeComponent } from './type';
+import { TypeComponent } from './type.component';
 
 export function DeclarationTitleComponent(
   model: ParameterReflection | DeclarationReflection,
@@ -23,7 +23,7 @@ export function DeclarationTitleComponent(
   md.add(`${model.flags.isRest ? '... ' : ''} **${escapeChars(model.name)}**`);
   if (model instanceof DeclarationReflection && model.typeParameters) {
     md.add(
-      `<${this.typeParameters
+      `<${model.typeParameters
         .map((typeParameter) => `\`${typeParameter.name}\``)
         .join(', ')}\\>`,
     );
@@ -39,7 +39,7 @@ export function DeclarationTitleComponent(
     model.defaultValue !== '...'
   ) {
     md.add(
-      ` = \`${stripLineBreaks(escape(stripComments(this.defaultValue)))}\``,
+      ` = \`${stripLineBreaks(escape(stripComments(model.defaultValue)))}\``,
     );
   }
   return md.print('');

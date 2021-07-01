@@ -29,6 +29,8 @@ export let literalType: {
   valueB?: boolean;
 };
 
+export const basicObjectLiteralType = { x: 1 };
+
 export const objectLiteralType = {
   '<': '<foo>',
   '<foo>': 'foo',

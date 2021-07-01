@@ -11,8 +11,8 @@ import { ParameterTable } from './parameter-table';
 import { PropertyTableComponent } from './property-table';
 import { SignatureTitleComponent } from './signature-title';
 import { SourcesComponent } from './sources';
-import { TypeComponent } from './type';
 import { TypeParameterTableComponent } from './type-parameter-table';
+import { TypeComponent } from './type.component';
 
 export function SignatureComponent(model: SignatureReflection, nested = false) {
   const md = new MarkdownBuilder();

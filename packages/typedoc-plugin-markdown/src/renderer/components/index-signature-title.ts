@@ -1,6 +1,6 @@
 import { SignatureReflection } from 'typedoc/dist/lib/models';
 
-import { TypeComponent } from './type';
+import { TypeComponent } from './type.component';
 
 export function IndexSignatureTitleComponent(model: SignatureReflection) {
   const md = ['▪'];

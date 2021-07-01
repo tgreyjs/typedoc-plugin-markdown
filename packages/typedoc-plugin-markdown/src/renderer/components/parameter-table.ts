@@ -2,7 +2,7 @@ import { ParameterReflection, ReflectionKind } from 'typedoc';
 
 import { stripLineBreaks } from '../utils';
 import { CommentsComponent } from './comments.component';
-import { TypeComponent } from './type';
+import { TypeComponent } from './type.component';
 
 export function ParameterTable(model: ParameterReflection[]) {
   const flattenParams = (current: any) => {

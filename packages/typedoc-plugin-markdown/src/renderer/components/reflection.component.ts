@@ -7,8 +7,8 @@ import { GroupsComponent } from './groups.component';
 import { SignatureComponent } from './member.signature';
 import { HierarchyComponent } from './reflection.hierachy';
 import { TocComponent } from './toc.component';
-import { TypeComponent } from './type';
 import { TypeParameterTableComponent } from './type-parameter-table';
+import { TypeComponent } from './type.component';
 
 export function ReflectionComponent(model: DeclarationReflection) {
   const md = new MarkdownBuilder();

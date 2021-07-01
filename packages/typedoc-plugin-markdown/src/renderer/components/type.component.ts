@@ -208,6 +208,7 @@ function getReferenceType(model: ReferenceType, emphasis) {
             `${LinkComponent(
               `\`${model.reflection.name}\``,
               model.reflection.url,
+              false,
             )}`,
           ]
         : [`\`${model.name}\``];

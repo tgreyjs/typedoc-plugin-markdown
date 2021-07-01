@@ -5,7 +5,7 @@ import {
 } from 'typedoc';
 
 import { MemberSymbolComponent } from './member-symbol';
-import { TypeComponent } from './type';
+import { TypeComponent } from './type.component';
 
 export function SignatureTitleComponent(
   model: SignatureReflection,
@@ -30,7 +30,7 @@ export function SignatureTitleComponent(
 
   if (model.typeParameters) {
     md.push(
-      `<${this.typeParameters
+      `<${model.typeParameters
         .map((typeParameter) => `\`${typeParameter.name}\``)
         .join(', ')}\\>`,
     );

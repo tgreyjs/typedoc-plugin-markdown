@@ -1,9 +1,9 @@
 import { DeclarationReflection } from 'typedoc';
 
-import { stripLineBreaks } from '../utils';
+import { escapeChars, stripLineBreaks } from '../utils';
 import { CommentsComponent } from './comments.component';
 import { SignatureTitleComponent } from './signature-title';
-import { TypeComponent } from './type';
+import { TypeComponent } from './type.component';
 
 export function PropertyTableComponent(model: DeclarationReflection[]) {
   const comments = model.map(
@@ -50,7 +50,7 @@ export function PropertyTableComponent(model: DeclarationReflection[]) {
     const nameCol: string[] = [];
     const name =
       property.name.match(/[\\`\\|]/g) !== null
-        ? escape(getName(property))
+        ? escapeChars(getName(property))
         : `\`${getName(property)}\``;
     nameCol.push(name);
     row.push(nameCol.join(' '));

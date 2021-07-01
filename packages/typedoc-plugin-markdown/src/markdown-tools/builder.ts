@@ -10,12 +10,10 @@ export class MarkdownBuilder {
   }
 
   format(contents: string) {
-    return (
-      contents
-        .replace(/[\r\n]{3,}/g, '\n\n')
-        .replace(/!spaces/g, '')
-        .replace(/^\s+|\s+$/g, '') + '\n'
-    );
+    return contents
+      .replace(/[\r\n]{3,}/g, '\n\n')
+      .replace(/!spaces/g, '')
+      .replace(/^\s+|\s+$/g, '');
   }
 
   print(joinChars = '\n\n') {
