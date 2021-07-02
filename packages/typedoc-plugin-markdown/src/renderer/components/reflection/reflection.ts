@@ -1,14 +1,14 @@
 import { DeclarationReflection } from 'typedoc';
 
-import { MarkdownBuilder } from '../../markdown-tools/builder';
-import { heading, unorderedList } from '../../markdown-tools/elements';
-import { CommentsComponent } from './comments.component';
-import { GroupsComponent } from './groups.component';
-import { SignatureComponent } from './member.signature';
+import { MarkdownBuilder } from '../../../markdown-tools/builder';
+import { heading, unorderedList } from '../../../markdown-tools/elements';
+import { SignatureComponent } from '../member/member.signature';
+import { GroupsComponent } from '../page/groups';
+import { TocComponent } from '../page/toc';
+import { CommentsComponent } from '../shared/comments';
+import { TypeParameterTableComponent } from '../shared/table.type-parameter';
+import { TypeComponent } from '../shared/type';
 import { HierarchyComponent } from './reflection.hierachy';
-import { TocComponent } from './toc.component';
-import { TypeParameterTableComponent } from './type-parameter-table';
-import { TypeComponent } from './type.component';
 
 export function ReflectionComponent(model: DeclarationReflection) {
   const md = new MarkdownBuilder();

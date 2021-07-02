@@ -3,9 +3,10 @@ import {
   ReflectionCategory,
   ReflectionGroup,
 } from 'typedoc/dist/lib/models';
-import { MarkdownBuilder } from '../../markdown-tools/builder';
-import { heading, horizontalRule } from '../../markdown-tools/elements';
-import { MemberComponent } from './member';
+
+import { MarkdownBuilder } from '../../../markdown-tools/builder';
+import { heading, horizontalRule } from '../../../markdown-tools/elements';
+import { MemberComponent } from '../member/member';
 
 export function GroupsComponent(groups: ReflectionGroup[]) {
   const md = new MarkdownBuilder();

@@ -2,9 +2,9 @@ import { PageEvent } from 'typedoc/dist/lib/output/events';
 
 import { MarkdownBuilder } from '../../markdown-tools/builder';
 import { heading } from '../../markdown-tools/elements';
-import { BreadcrumbsComponent } from '../components/breadcrumbs.component';
-import { GroupsComponent } from '../components/groups.component';
-import { TocComponent } from '../components/toc.component';
+import { BreadcrumbsComponent } from '../components/page/breadcrumbs';
+import { GroupsComponent } from '../components/page/groups';
+import { TocComponent } from '../components/page/toc';
 import { useState } from '../store';
 
 export function GlobalsTemplate(page: PageEvent) {

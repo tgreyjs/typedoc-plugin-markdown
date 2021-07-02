@@ -1,8 +1,45 @@
-import { SignatureReflection } from 'typedoc';
+import { DeclarationReflection, SignatureReflection } from 'typedoc';
 import { ArrayType, ReferenceType, Type } from 'typedoc/dist/lib/models/types';
 
-import { escapeChars } from '../utils';
-import { LinkComponent } from './link.component';
+import { MarkdownBuilder } from '../../../markdown-tools/builder';
+import { heading, link } from '../../../markdown-tools/elements';
+import { escapeChars } from '../../utils';
+import { LinkComponent } from '../shared/link';
+
+export function SourcesComponent(
+  model: DeclarationReflection | SignatureReflection,
+) {
+  const md = new MarkdownBuilder();
+
+  if (model.implementationOf) {
+    md.add(heading(4, 'Implementation of'));
+    md.add(TypeAndParentComponent(model.implementationOf));
+  }
+
+  if (model.inheritedFrom) {
+    md.add(heading(4, 'Inherited from'));
+    md.add(TypeAndParentComponent(model.inheritedFrom));
+  }
+
+  if (model.overwrites) {
+    md.add(heading(4, 'Overrides'));
+    md.add(TypeAndParentComponent(model.overwrites));
+  }
+
+  if (model.sources) {
+    md.add(heading(4, 'Defined in'));
+
+    model.sources.forEach((source) => {
+      if (source.url) {
+        md.add(link(`${source.fileName}:${source.line}`, source.url));
+      } else {
+        md.add(`${source.fileName}:${source.line}`);
+      }
+    });
+  }
+
+  return md.print();
+}
 
 export function TypeAndParentComponent(
   model: ArrayType | ReferenceType | Type,

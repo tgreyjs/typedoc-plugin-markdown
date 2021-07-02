@@ -5,10 +5,10 @@ import {
   ReflectionGroup,
 } from 'typedoc/dist/lib/models';
 
-import { MarkdownBuilder } from '../../markdown-tools/builder';
-import { heading, unorderedList } from '../../markdown-tools/elements';
-import { useState } from '../store';
-import { LinkComponent } from './link.component';
+import { MarkdownBuilder } from '../../../markdown-tools/builder';
+import { heading, unorderedList } from '../../../markdown-tools/elements';
+import { useState } from '../../store';
+import { LinkComponent } from '../shared/link';
 
 export function TocComponent(model: ProjectReflection | DeclarationReflection) {
   const { options } = useState();

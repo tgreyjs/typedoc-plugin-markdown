@@ -1,8 +1,8 @@
 import { Comment } from 'typedoc/dist/lib/models';
 
-import { MarkdownBuilder } from '../../markdown-tools/builder';
-import { backTicks, bold, link } from '../../markdown-tools/elements';
-import { useState } from '../store';
+import { MarkdownBuilder } from '../../../markdown-tools/builder';
+import { backTicks, bold, link } from '../../../markdown-tools/elements';
+import { useState } from '../../store';
 
 const URL_PREFIX = /^(http|ftp)s?:\/\//;
 const BRACKETS = /\[\[([^\]]+)\]\]/g;

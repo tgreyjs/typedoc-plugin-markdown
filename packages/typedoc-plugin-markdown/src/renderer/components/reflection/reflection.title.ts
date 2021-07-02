@@ -1,7 +1,7 @@
 import { DeclarationReflection } from 'typedoc';
 
-import { useState } from '../store';
-import { escapeChars } from '../utils';
+import { useState } from '../../store';
+import { escapeChars } from '../../utils';
 
 export function ReflectionTitleComponent(
   model: DeclarationReflection,

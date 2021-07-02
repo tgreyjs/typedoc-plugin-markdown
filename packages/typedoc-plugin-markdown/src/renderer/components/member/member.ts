@@ -1,8 +1,9 @@
 import { DeclarationReflection, ReferenceReflection } from 'typedoc';
-import { MarkdownBuilder } from '../../markdown-tools//builder';
-import { heading } from '../../markdown-tools//elements';
-import { useState } from '../store';
-import { escapeChars } from '../utils';
+
+import { MarkdownBuilder } from '../../../markdown-tools/builder';
+import { heading } from '../../../markdown-tools/elements';
+import { useState } from '../../store';
+import { escapeChars } from '../../utils';
 import { DeclarationComponent } from './member.declaration';
 import { SignatureComponent } from './member.signature';
 

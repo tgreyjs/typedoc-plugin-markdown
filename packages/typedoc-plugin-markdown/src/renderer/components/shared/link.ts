@@ -1,8 +1,8 @@
 import * as path from 'path';
 
-import { link } from '../../markdown-tools/elements';
-import { useState } from '../store';
-import { escapeChars } from '../utils';
+import { link } from '../../../markdown-tools/elements';
+import { useState } from '../../store';
+import { escapeChars } from '../../utils';
 
 export function LinkComponent(label: string, to = '', escapeLabel = true) {
   label = escapeLabel ? escapeChars(label) : label;

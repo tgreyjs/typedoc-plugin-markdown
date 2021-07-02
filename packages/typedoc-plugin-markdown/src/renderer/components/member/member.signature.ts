@@ -4,15 +4,15 @@ import {
   SignatureReflection,
 } from 'typedoc';
 
-import { MarkdownBuilder } from '../../markdown-tools//builder';
-import { heading } from '../../markdown-tools//elements';
-import { CommentsComponent, comment } from './comments.component';
-import { ParameterTable } from './parameter-table';
-import { PropertyTableComponent } from './property-table';
-import { SignatureTitleComponent } from './signature-title';
-import { SourcesComponent } from './sources';
-import { TypeParameterTableComponent } from './type-parameter-table';
-import { TypeComponent } from './type.component';
+import { MarkdownBuilder } from '../../../markdown-tools/builder';
+import { heading } from '../../../markdown-tools/elements';
+import { CommentsComponent, comment } from '../shared/comments';
+import { ParameterTable } from '../shared/table.parameter';
+import { PropertyTableComponent } from '../shared/table.property';
+import { TypeParameterTableComponent } from '../shared/table.type-parameter';
+import { TypeComponent } from '../shared/type';
+import { SignatureTitleComponent } from './member.signature.title';
+import { SourcesComponent } from './member.sources';
 
 export function SignatureComponent(model: SignatureReflection, nested = false) {
   const md = new MarkdownBuilder();

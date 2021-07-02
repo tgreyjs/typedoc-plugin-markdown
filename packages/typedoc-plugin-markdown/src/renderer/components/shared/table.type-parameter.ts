@@ -1,8 +1,8 @@
 import { TypeParameterReflection } from 'typedoc';
 
-import { stripLineBreaks } from '../utils';
-import { CommentsComponent } from './comments.component';
-import { TypeComponent } from './type.component';
+import { stripLineBreaks } from '../../utils';
+import { CommentsComponent } from './comments';
+import { TypeComponent } from './type';
 
 export function TypeParameterTableComponent(
   parameters: TypeParameterReflection[],

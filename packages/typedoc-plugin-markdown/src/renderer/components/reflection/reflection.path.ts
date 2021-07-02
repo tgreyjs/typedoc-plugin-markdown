@@ -1,6 +1,6 @@
 import { DeclarationReflection, ReflectionKind } from 'typedoc';
 
-import { LinkComponent } from './link.component';
+import { LinkComponent } from '../shared/link';
 
 export function ReflectionPathComponent(model: DeclarationReflection) {
   if (model) {

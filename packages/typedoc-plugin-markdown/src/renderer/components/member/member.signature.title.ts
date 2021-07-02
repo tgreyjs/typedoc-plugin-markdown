@@ -4,8 +4,8 @@ import {
   SignatureReflection,
 } from 'typedoc';
 
-import { MemberSymbolComponent } from './member-symbol';
-import { TypeComponent } from './type.component';
+import { TypeComponent } from '../shared/type';
+import { MemberSymbolComponent } from './member.symbol';
 
 export function SignatureTitleComponent(
   model: SignatureReflection,

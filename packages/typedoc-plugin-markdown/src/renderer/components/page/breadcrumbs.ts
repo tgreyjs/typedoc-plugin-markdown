@@ -1,9 +1,9 @@
 import { DeclarationReflection, ProjectReflection, Reflection } from 'typedoc';
 
-import { MarkdownBuilder } from '../../markdown-tools/builder';
-import { useState } from '../store';
-import { escapeChars } from '../utils';
-import { LinkComponent } from './link.component';
+import { MarkdownBuilder } from '../../../markdown-tools/builder';
+import { useState } from '../../store';
+import { escapeChars } from '../../utils';
+import { LinkComponent } from '../shared/link';
 
 export function BreadcrumbsComponent(
   model: ProjectReflection | DeclarationReflection | Reflection,

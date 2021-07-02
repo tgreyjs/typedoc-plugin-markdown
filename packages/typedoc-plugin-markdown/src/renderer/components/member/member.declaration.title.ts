@@ -1,14 +1,14 @@
-import { DeclarationReflection, ParameterReflection } from 'typedoc';
 import {
-  LiteralType,
+  DeclarationReflection,
+  ParameterReflection,
   ReflectionKind,
-  ReflectionType,
-} from 'typedoc/dist/lib/models';
+} from 'typedoc';
+import { LiteralType, ReflectionType } from 'typedoc/dist/lib/models';
 
-import { MarkdownBuilder } from '../../markdown-tools/builder';
-import { escapeChars, stripComments, stripLineBreaks } from '../utils';
-import { MemberSymbolComponent } from './member-symbol';
-import { TypeComponent } from './type.component';
+import { MarkdownBuilder } from '../../../markdown-tools/builder';
+import { escapeChars, stripComments, stripLineBreaks } from '../../utils';
+import { TypeComponent } from '../shared/type';
+import { MemberSymbolComponent } from './member.symbol';
 
 export function DeclarationTitleComponent(
   model: ParameterReflection | DeclarationReflection,
@@ -39,7 +39,9 @@ export function DeclarationTitleComponent(
     model.defaultValue !== '...'
   ) {
     md.add(
-      ` = \`${stripLineBreaks(escape(stripComments(model.defaultValue)))}\``,
+      ` = \`${stripLineBreaks(
+        escapeChars(stripComments(model.defaultValue)),
+      )}\``,
     );
   }
   return md.print('');

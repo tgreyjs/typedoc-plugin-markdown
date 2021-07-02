@@ -23,8 +23,8 @@ import {
   UnknownType,
 } from 'typedoc/dist/lib/models/types';
 
-import { escapeChars } from '../utils';
-import { LinkComponent } from './link.component';
+import { escapeChars } from '../../utils';
+import { LinkComponent } from './link';
 
 type Collapse = 'object' | 'function' | 'all' | 'none';
 type allowedTypes =
@@ -221,7 +221,7 @@ function getReferenceType(model: ReferenceType, emphasis) {
     }
     return reflection.join('');
   }
-  return emphasis ? `\`${model.name}\`` : escape(model.name);
+  return emphasis ? `\`${model.name}\`` : escapeChars(model.name);
 }
 
 function getArrayType(model: ArrayType, emphasis: boolean) {

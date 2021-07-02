@@ -1,7 +1,7 @@
 import { DeclarationHierarchy } from 'typedoc';
 
-import { spaces } from '../utils';
-import { TypeComponent } from './type.component';
+import { spaces } from '../../utils';
+import { TypeComponent } from '../shared/type';
 
 export function HierarchyComponent(model: DeclarationHierarchy) {
   return hierarchy(model);

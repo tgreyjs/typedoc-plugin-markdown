@@ -2,13 +2,13 @@ import { PageEvent } from 'typedoc/dist/lib/output/events';
 
 import { MarkdownBuilder } from '../../markdown-tools/builder';
 import { heading } from '../../markdown-tools/elements';
-import { BreadcrumbsComponent } from '../components/breadcrumbs.component';
-import { ReflectionPathComponent } from '../components/reflection-path';
-import { ReflectionTitleComponent } from '../components/reflection-title';
-import { ReflectionComponent } from '../components/reflection.component';
+import { BreadcrumbsComponent } from '../components/page/breadcrumbs';
+import { ReflectionComponent } from '../components/reflection/reflection';
+import { ReflectionPathComponent } from '../components/reflection/reflection.path';
+import { ReflectionTitleComponent } from '../components/reflection/reflection.title';
 import { useState } from '../store';
 
-export function PageTemplate(page: PageEvent) {
+export function ReflectionTemplate(page: PageEvent) {
   const md = new MarkdownBuilder();
 
   const { options } = useState();

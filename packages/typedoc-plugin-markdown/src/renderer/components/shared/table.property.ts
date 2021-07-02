@@ -1,9 +1,9 @@
 import { DeclarationReflection } from 'typedoc';
 
-import { escapeChars, stripLineBreaks } from '../utils';
-import { CommentsComponent } from './comments.component';
-import { SignatureTitleComponent } from './signature-title';
-import { TypeComponent } from './type.component';
+import { escapeChars, stripLineBreaks } from '../../utils';
+import { SignatureTitleComponent } from '../member/member.signature.title';
+import { CommentsComponent } from './comments';
+import { TypeComponent } from './type';
 
 export function PropertyTableComponent(model: DeclarationReflection[]) {
   const comments = model.map(
