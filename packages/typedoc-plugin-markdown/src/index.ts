@@ -1,8 +1,8 @@
-import * as fs from 'fs';
 import * as path from 'path';
+
 import { Application, Converter, ParameterType, Renderer } from 'typedoc';
+
 import { render } from './renderer/render';
-import MarkdownTheme from './theme';
 
 export async function load(app: Application) {
   app.options.addDeclaration({
@@ -72,7 +72,7 @@ export async function load(app: Application) {
 
   app.renderer.render = render;
 
-  app.converter.on(Converter.EVENT_RESOLVE_BEGIN, () => {
+  /*app.converter.on(Converter.EVENT_RESOLVE_BEGIN, () => {
     const themeName = app.options.getValue('theme');
 
     const themeDir = path.join(__dirname);
@@ -90,9 +90,9 @@ export async function load(app: Application) {
     }
 
     app.options.setValue('theme', themeDir);
-  });
+  });*/
 }
-
+/*
 function isMarkdownTheme(themeFileName: string) {
   try {
     const ThemeClass = require(themeFileName).default;
@@ -100,4 +100,4 @@ function isMarkdownTheme(themeFileName: string) {
   } catch (e) {
     return false;
   }
-}
+}*/

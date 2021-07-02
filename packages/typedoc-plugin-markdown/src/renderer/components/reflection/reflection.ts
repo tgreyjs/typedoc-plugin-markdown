@@ -9,9 +9,12 @@ import { CommentsComponent } from '../shared/comments';
 import { TypeParameterTableComponent } from '../shared/table.type-parameter';
 import { TypeComponent } from '../shared/type';
 import { HierarchyComponent } from './reflection.hierachy';
+import { ReflectionPathComponent } from './reflection.path';
 
 export function ReflectionComponent(model: DeclarationReflection) {
   const md = new MarkdownBuilder();
+
+  md.add(ReflectionPathComponent(model));
 
   if (model.comment) {
     md.add(CommentsComponent(model.comment));

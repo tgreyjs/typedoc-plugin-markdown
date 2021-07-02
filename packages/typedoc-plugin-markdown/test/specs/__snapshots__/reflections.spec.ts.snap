@@ -1,71 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Reflections: (header) should compile template with breadcrumbs and without title 1`] = `
-"[helper: breadcrumbs]
+exports[`Reflections: (hierarchy) should compile nested type hierarchy 1`] = `
+"## Hierarchy
 
-[helper: toc]
+- [\`ParentClass\`](classes/parentclass.md)
 
-[partial: members]
-"
+  ↳ **\`ChildClassA\`**
+
+  ↳↳ [\`GrandChildClassA\`](classes/grandchildclassa.md)
+
+[TOC]
+
+[GROUPS]"
+`;
+
+exports[`Reflections: (hierarchy) should compile type hierarchy 1`] = `
+"## Hierarchy
+
+- **\`ParentClass\`**
+
+  ↳ [\`ChildClassA\`](classes/childclassa.md)
+
+  ↳ [\`ChildClassB\`](classes/childclassb.md)
+
+[TOC]
+
+[GROUPS]"
 `;
 
 exports[`Reflections: (template) should compile Enum 1`] = `
-"# Enumeration: EnumReflection
+"[TOC]
 
-[helper: toc]
-
-[partial: members]
-"
+[GROUPS]"
 `;
 
 exports[`Reflections: (template) should compile a callable reflection 1`] = `
-"# Interface: CallableReflection
-
-## Callable
+"## Callable
 
 ### CallableReflection
 
-[partial: member.signature]
+▸ **CallableReflection**(): \`string\`
 
-[helper: toc]
+#### Returns
 
-[partial: members]
-"
+\`string\`
+
+#### Defined in
+
+[reflections.ts:6](https://github.com/tgreyuk/typedoc-plugin-markdown/blob/a1a25ce/packages/typedoc-plugin-markdown/test/stubs/src/reflections.ts#L6)
+
+[TOC]"
 `;
 
-exports[`Reflections: (template) should compile an indexable reflection 1`] = `
-"# Interface: IndexableReflection
-
-## Indexable
-
-▪ [index: \`number\`]: \`string\`
-
-[partial: comment]
-
-[helper: toc]
-
-[partial: members]
-"
-`;
+exports[`Reflections: (template) should compile an indexable reflection 1`] = `"[TOC]"`;
 
 exports[`Reflections: (template) should compile implemented class 1`] = `
-"# Class: ImplementedClass
+"## Implements
 
-## Implements
+- [\`ReflectionClass\`](classes/reflectionclass.md)
 
-- [\`ReflectionClass\`](../classes/reflectionclass.md)
+[TOC]
 
-[helper: toc]
-
-[partial: members]
-"
-`;
-
-exports[`Reflections: (template) should compile module with breadcrumbs and project title 1`] = `
-"# Enumeration: EnumReflection
-
-[helper: toc]
-
-[partial: members]
-"
+[GROUPS]"
 `;

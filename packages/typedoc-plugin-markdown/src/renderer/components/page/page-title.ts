@@ -1,10 +1,10 @@
-import { DeclarationReflection } from 'typedoc';
+import { DeclarationReflection, ProjectReflection } from 'typedoc';
 
 import { useState } from '../../store';
 import { escapeChars } from '../../utils';
 
-export function ReflectionTitleComponent(
-  model: DeclarationReflection,
+export function PageTitleComponent(
+  model: DeclarationReflection | ProjectReflection,
   shouldEscape = true,
 ) {
   const title: string[] = [''];
@@ -14,7 +14,7 @@ export function ReflectionTitleComponent(
   if (model && model.kindString && url !== project?.url) {
     title.push(`${model.kindString}: `);
   }
-  if (url === project?.url) {
+  if (model instanceof ProjectReflection) {
     title.push(options.indexTitle || project?.name);
   } else {
     title.push(shouldEscape ? escapeChars(model.name) : model.name);

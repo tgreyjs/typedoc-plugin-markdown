@@ -9,9 +9,9 @@
   "scripts": {
     "lint": "eslint ./src --ext .ts",
     "prepublishOnly": "yarn run lint && yarn run build && yarn run test",
-    "build": "rm -rf dist && tsc && copyfiles --up 1 ./src/**/*.hbs ./dist/",
-    "pretest": "yarn run demo:md && markdownlint ./demo/md",
-    "test": "jest --colors",
+    "build": "rm -rf dist && tsc",
+    "pretestx": "yarn run demo:md && markdownlint ./demo/md",
+    "test": "jest --colors --updateSnapshot",
     "build-and-test": "yarn run build && yarn run test",
     "fixtures": "node ./tasks/fixtures.js",
     "demos": "yarn run build && npm-run-all demo:*",

@@ -1,124 +1,79 @@
-import * as Handlebars from 'handlebars';
-
+import { DeclarationComponent } from '../../src/renderer/components/member/member.declaration';
+import * as sourcesComponent from '../../src/renderer/components/member/member.sources';
 import { TestApp } from '../test-app';
 
 describe(`Declarations:`, () => {
   let testApp: TestApp;
 
-  let template: Handlebars.TemplateDelegate;
-
   beforeAll(async () => {
+    jest
+      .spyOn(sourcesComponent, 'SourcesComponent')
+      .mockReturnValue('[partial: member.sources]\n');
     testApp = new TestApp(['declarations.ts']);
     await testApp.bootstrap();
-    TestApp.stubPartials(['member.sources']);
-    template = TestApp.getPartial('member.declaration');
   });
 
   test(`should compile a const with default value`, () => {
-    expect(
-      TestApp.compileTemplate(
-        template,
-        testApp.findReflection('stringConstWithDefaultValue'),
-      ),
-    ).toMatchSnapshot();
+    const model = testApp.findReflectionByName('stringConstWithDefaultValue');
+    expect(DeclarationComponent(model)).toMatchSnapshot();
   });
 
   test(`should compile a let with default value`, () => {
-    expect(
-      TestApp.compileTemplate(
-        template,
-        testApp.findReflection('stringLetWithDefaultValue'),
-      ),
-    ).toMatchSnapshot();
+    const model = testApp.findReflectionByName('stringLetWithDefaultValue');
+    expect(DeclarationComponent(model)).toMatchSnapshot();
   });
 
   test(`should compile an undefined declaration`, () => {
-    expect(
-      TestApp.compileTemplate(
-        template,
-        testApp.findReflection('undefinedNumberDeclaration'),
-      ),
-    ).toMatchSnapshot();
+    const model = testApp.findReflectionByName('undefinedNumberDeclaration');
+    expect(DeclarationComponent(model)).toMatchSnapshot();
   });
 
   test(`should compile object literal declaration`, () => {
-    expect(
-      TestApp.compileTemplate(
-        template,
-        testApp.findReflection('objectLiteralDeclaration'),
-      ),
-    ).toMatchSnapshot();
+    const model = testApp.findReflectionByName('objectLiteralDeclaration');
+    expect(DeclarationComponent(model)).toMatchSnapshot();
   });
 
   test(`should compile object literal cast as a const`, () => {
-    expect(
-      TestApp.compileTemplate(
-        template,
-        testApp.findReflection('objectLiteralAsConstDeclaration'),
-      ),
-    ).toMatchSnapshot();
+    const model = testApp.findReflectionByName(
+      'objectLiteralAsConstDeclaration',
+    );
+    expect(DeclarationComponent(model)).toMatchSnapshot();
   });
 
   test(`should compile type literal declaration`, () => {
-    expect(
-      TestApp.compileTemplate(
-        template,
-        testApp.findReflection('typeLiteralDeclaration'),
-      ),
-    ).toMatchSnapshot();
+    const model = testApp.findReflectionByName('typeLiteralDeclaration');
+    expect(DeclarationComponent(model)).toMatchSnapshot();
   });
 
   test(`should compile declaration with double underscores in name and value`, () => {
-    expect(
-      TestApp.compileTemplate(
-        template,
-        testApp.findReflection('__DOUBLE_UNDERSCORES_DECLARATION__'),
-      ),
-    ).toMatchSnapshot();
+    const model = testApp.findReflectionByName(
+      '__DOUBLE_UNDERSCORES_DECLARATION__',
+    );
+    expect(DeclarationComponent(model)).toMatchSnapshot();
   });
 
   test(`should compile any function type`, () => {
-    expect(
-      TestApp.compileTemplate(
-        template,
-        testApp.findReflection('AnyFunctionType'),
-      ),
-    ).toMatchSnapshot();
+    const model = testApp.findReflectionByName('AnyFunctionType');
+    expect(DeclarationComponent(model)).toMatchSnapshot();
   });
 
   test(`should compile function declaration`, () => {
-    expect(
-      TestApp.compileTemplate(
-        template,
-        testApp.findReflection('functionDeclaration'),
-      ),
-    ).toMatchSnapshot();
+    const model = testApp.findReflectionByName('functionDeclaration');
+    expect(DeclarationComponent(model)).toMatchSnapshot();
   });
 
   test(`should compile callable declaration`, () => {
-    expect(
-      TestApp.compileTemplate(
-        template,
-        testApp.findReflection('callableDeclaration'),
-      ),
-    ).toMatchSnapshot();
+    const model = testApp.findReflectionByName('callableDeclaration');
+    expect(DeclarationComponent(model)).toMatchSnapshot();
   });
 
   test(`should compile indexable declaration`, () => {
-    expect(
-      TestApp.compileTemplate(
-        template,
-        testApp.findReflection('indexableDeclaration'),
-      ),
-    ).toMatchSnapshot();
+    const model = testApp.findReflectionByName('indexableDeclaration');
+    expect(DeclarationComponent(model)).toMatchSnapshot();
   });
 
   test(`should compile enum delcaration`, () => {
-    expect(
-      TestApp.compileTemplate(
-        template,
-        testApp.findReflection('EnumDeclarations').children[0],
-      ),
-    ).toMatchSnapshot();
+    const model = testApp.findReflectionByName('EnumDeclarations').children[0];
+    expect(DeclarationComponent(model)).toMatchSnapshot();
   });
 });

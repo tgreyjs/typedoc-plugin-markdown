@@ -2,47 +2,20 @@
 
 exports[`Comments: should allow html in comments' 1`] = `
 "<p>
-You can write <strong>HTML</strong> tags directly in comments
+You can write <strong>HTML</strong> tags directly in <a href=\\"comments\\">comments</a>
 </p>
 <ul>
 <li>List item</li>
-</ul>
-"
+</ul>"
 `;
 
-exports[`Comments: should build @link references' 1`] = `
-"See [\`CommentClass\`](commentclass.md) and [CommentClass's comment property](commentclass.md#comment).
-Also, check out [Google](https://www.google.com) and
-[GitHub](https://github.com).
-
-Taken from [JsDoc](http://usejsdoc.org/tags-inline-link.html).
-"
-`;
-
-exports[`Comments: should convert comments with fenced block' 1`] = `
-"Some comments with fence blocks
-
-\`\`\`typescript
-someFunction()
-\`\`\`
-
-\`\`\`js
-anotherFunction()
-\`\`\`
-"
-`;
-
-exports[`Comments: should convert comments with includes' 1`] = `
-"This is an example of include
-
-This is a simple example on how to use include.
-
-![My image alt text](../media/logo.png)
-
-This is an example of handlebars include
-
-This is a simple example on a handlebars file.
-"
+exports[`Comments: should build @link reference' 1`] = `
+"- [\`CommentClass\`](RelativeUrlComponent(reflection.url))
+- [CommentClass.comment](RelativeUrlComponent(reflection.url))
+- {@link unknownA}
+- [commentsInReturn](RelativeUrlComponent(reflection.url))
+- [Google](https://www.google.com)
+- [GitHub](https://github.com)"
 `;
 
 exports[`Comments: should convert comments with tags' 1`] = `
@@ -54,15 +27,13 @@ Tag description on new line
 - Tag description on another line
 
 **\`deprecated\`**
-Another tag description
-"
+Another tag description"
 `;
 
 exports[`Comments: should convert symbols brackets to symbol links' 1`] = `
 "Additionally you can link to other classes, members or functions using double square brackets.
 
-- Link to an external reflection: [CommentClass](commentclass.md)
-- Link to an internal reflection: [commentsInReturn](../modules.md#commentsinreturn)
-- Link to an undefined reflection: [[VOID]]
-"
+- [CommentClass](RelativeUrlComponent(reflection.url))
+- [commentsInReturn](RelativeUrlComponent(reflection.url))
+- [[unknownB]]"
 `;

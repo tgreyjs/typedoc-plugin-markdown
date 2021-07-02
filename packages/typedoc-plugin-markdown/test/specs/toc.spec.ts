@@ -1,45 +1,54 @@
-import * as Handlebars from 'handlebars';
-import { Reflection } from 'typedoc';
-
+import { TocComponent } from '../../src/renderer/components/page/toc';
+import { setState } from '../../src/renderer/store';
 import { TestApp } from '../test-app';
 
 describe(`TOC:`, () => {
   let testApp: TestApp;
-  let moduleReflection: Reflection;
-  let classReflection: Reflection;
 
-  beforeAll(() => {
-    testApp = new TestApp(['breadcrumbs.ts']);
+  beforeAll(async () => {
+    testApp = new TestApp(['categories.ts', 'toc.ts']);
+    await testApp.bootstrap();
   });
 
-  describe(`(default)`, () => {
+  describe(`(with hideInPageTOC=false)`, () => {
     beforeAll(async () => {
-      await testApp.bootstrap();
-      moduleReflection = testApp.project.children[0];
-      classReflection = testApp.project.findReflectionByName('Breadcrumbs');
+      setState({ options: { hideInPageTOC: false } });
     });
 
-    test(`should display toc for module'`, () => {
-      expect(
-        TestApp.compileHelper(Handlebars.helpers.toc, moduleReflection),
-      ).toMatchSnapshot();
+    test(`should compile module toc'`, () => {
+      const model = testApp.getPageByModelName('toc').model;
+      expect(TocComponent(model)).toMatchSnapshot();
     });
 
-    test(`should display toc for class'`, () => {
-      expect(
-        TestApp.compileHelper(Handlebars.helpers.toc, classReflection),
-      ).toMatchSnapshot();
+    test(`should compile module toc with categories'`, () => {
+      const model = testApp.getPageByModelName('categories').model;
+      expect(TocComponent(model)).toMatchSnapshot();
+    });
+
+    test(`should compile interface toc'`, () => {
+      const model = testApp.getPageByModelName('Interface1').model;
+      expect(TocComponent(model)).toMatchSnapshot();
     });
   });
-  describe(`(hideInPageToc)`, () => {
+
+  describe(`(with hideInPageTOC=true)`, () => {
     beforeAll(async () => {
-      await testApp.bootstrap({ hideInPageTOC: true });
-      moduleReflection = testApp.project.children[0];
-      classReflection = testApp.project.findReflectionByName('Breadcrumbs');
+      setState({ options: { hideInPageTOC: true } });
     });
 
-    test(`should not display toc for class'`, () => {
-      expect(Handlebars.helpers.toc.call(classReflection)).toBeNull();
+    test(`should compile basic groups'`, () => {
+      const model = testApp.getPageByModelName('toc').model;
+      expect(TocComponent(model)).toMatchSnapshot();
+    });
+
+    test(`should compile category groups'`, () => {
+      const model = testApp.getPageByModelName('categories').model;
+      expect(TocComponent(model)).toMatchSnapshot();
+    });
+
+    test(`should compile interface toc'`, () => {
+      const model = testApp.getPageByModelName('Interface1').model;
+      expect(TocComponent(model)).toBe('');
     });
   });
 });

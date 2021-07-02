@@ -1,27 +1,98 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TOC: (default) should display toc for class' 1`] = `
+exports[`TOC: (with hideInPageTOC=false) should compile interface toc' 1`] = `
 "## Table of contents
 
-### Constructors
+### Properties
 
-- [constructor](breadcrumbs.md#constructor)
-
-### Methods
-
-- [someMethod](breadcrumbs.md#somemethod)
-"
+- [x](toc.interface1.md#x)"
 `;
 
-exports[`TOC: (default) should display toc for module' 1`] = `
+exports[`TOC: (with hideInPageTOC=false) should compile module toc with categories' 1`] = `
 "## Table of contents
 
-### Constructors
+### CategoryA Interfaces
 
-- [constructor](breadcrumbs.md#constructor)
+- [CategoryInterfaceA1](../interfaces/categories.categoryinterfacea1.md)
+- [CategoryInterfaceA2](../interfaces/categories.categoryinterfacea2.md)
 
-### Methods
+### Other Interfaces
 
-- [someMethod](breadcrumbs.md#somemethod)
-"
+- [OtherInterfaceA](../interfaces/categories.otherinterfacea.md)
+
+### CategoryA Variables
+
+- [categoryVariableA1](categories.md#categoryvariablea1)
+- [categoryVariableA2](categories.md#categoryvariablea2)
+
+### CategoryB Variables
+
+- [categoryVariableB1](categories.md#categoryvariableb1)
+
+### Other Variables
+
+- [otherVariableA](categories.md#othervariablea)
+- [otherVariableB](categories.md#othervariableb)
+
+### CategoryA Functions
+
+- [categoryFunctionA1](categories.md#categoryfunctiona1)
+- [categoryFunctionA2](categories.md#categoryfunctiona2)
+- [categoryFunctionA3](categories.md#categoryfunctiona3)
+
+### CategoryB Functions
+
+- [categoryFunctionB2](categories.md#categoryfunctionb2)
+
+### Other Functions
+
+- [otherFunctionA](categories.md#otherfunctiona)
+- [otherFunctionB](categories.md#otherfunctionb)"
+`;
+
+exports[`TOC: (with hideInPageTOC=false) should compile module toc' 1`] = `
+"## Table of contents
+
+### Classes
+
+- [Class1](../classes/toc.class1.md)
+- [Class2](../classes/toc.class2.md)
+
+### Interfaces
+
+- [Interface1](../interfaces/toc.interface1.md)
+- [Interface2](../interfaces/toc.interface2.md)
+
+### Variables
+
+- [variable1](toc.md#variable1)
+- [variable2](toc.md#variable2)
+
+### Functions
+
+- [function1](toc.md#function1)
+- [function2](toc.md#function2)"
+`;
+
+exports[`TOC: (with hideInPageTOC=true) should compile basic groups' 1`] = `
+"## Classes
+
+- [Class1](../classes/toc.class1.md)
+- [Class2](../classes/toc.class2.md)
+
+## Interfaces
+
+- [Interface1](../interfaces/toc.interface1.md)
+- [Interface2](../interfaces/toc.interface2.md)"
+`;
+
+exports[`TOC: (with hideInPageTOC=true) should compile category groups' 1`] = `
+"## CategoryA Interfaces
+
+- [CategoryInterfaceA1](../interfaces/categories.categoryinterfacea1.md)
+- [CategoryInterfaceA2](../interfaces/categories.categoryinterfacea2.md)
+
+## Other Interfaces
+
+- [OtherInterfaceA](../interfaces/categories.otherinterfacea.md)"
 `;

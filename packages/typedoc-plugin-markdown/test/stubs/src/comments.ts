@@ -1,25 +1,25 @@
 /**
- * See {@linkcode CommentClass} and [CommentClass's comment property]{@link CommentClass.comment}.
- * Also, check out {@link https://www.google.com|Google} and
- * {@link https://github.com GitHub}.
- *
- * Taken from [JsDoc](http://usejsdoc.org/tags-inline-link.html).
+ * - {@linkcode CommentClass}
+ * - {@link CommentClass.comment}
+ * - {@link unknownA}
+ * - {@linkplain commentsInReturn}
+ * - {@link https://www.google.com|Google}
+ * - {@link https://github.com GitHub}
  */
-export const commentWithDocLinks = true;
+export const commentsWithDocLinks = true;
 
 /**
  * Additionally you can link to other classes, members or functions using double square brackets.
  *
- * - Link to an external reflection: [[CommentClass]]
- * - Link to an internal reflection: [[commentsInReturn]]
- * - Link to an undefined reflection: [[VOID]]
+ * - [[CommentClass]]
+ * - [[commentsInReturn]]
+ * - [[unknownB]]
  */
-
 export const commentsWithSymbolLinks = true;
 
 /**
  * <p>
- * You can write <strong>HTML</strong> tags directly in comments
+ * You can write <strong>HTML</strong> tags directly in <a href="comments">comments</a>
  * </p>
  * <ul>
  * <li>List item</li>
@@ -28,15 +28,13 @@ export const commentsWithSymbolLinks = true;
 export const commentsWithHTML = true;
 
 /**
- * This is an example of include
+ * ## Markdown
+ * > Note
  *
- * [[include:class-example.md]]
+ * - Some *basic* [markdown](markdown)
  *
- * This is an example of handlebars include
- *
- * [[include:class-example.hbs]]
  */
-export const commentsWithIncludes = true;
+export const commentsWithMarkdown = true;
 
 /**
  * @name Tag description on same line
@@ -92,13 +90,3 @@ export class CommentClass {
     return 'Comment';
   }
 }
-
-/**
- * Some comments
- */
-export type literalWithBlockComments = {
-  /**
-   * Comment for prop
-   */
-  prop: string;
-};

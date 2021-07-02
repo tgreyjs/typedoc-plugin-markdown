@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import * as path from 'path';
 
 import ProgressBar from 'progress';
@@ -12,6 +13,8 @@ import { RendererEvent } from 'typedoc/dist/lib/output/events';
 import { TemplateMapping } from 'typedoc/dist/lib/output/themes/DefaultTheme';
 
 import { setDefaultState, setState } from './store';
+import { PageTemplate } from './templates/page.template';
+import { ReadmeTemplate } from './templates/readme.template';
 import { PluginOptions } from './types';
 
 export async function render(
@@ -37,27 +40,42 @@ export async function render(
   output.settings = options;
   output.urls = getUrls(project, options);
   if (output.urls) {
+    const bar = new ProgressBar('Rendering [:bar] :percent', {
+      stream: process.stdout,
+      total: output.urls.length,
+      width: 40,
+    });
+
     setDefaultState(project, options);
 
     if (output.urls) {
-      const bar = new ProgressBar('Rendering [:bar] :percent', {
-        total: output.urls.length,
-        width: 40,
-      });
-      this.trigger(output);
-      if (!output.isDefaultPrevented) {
-        output.urls?.forEach((mapping: UrlMapping, i) => {
+      output.urls
+        .filter((mapping) => mapping.url)
+        .forEach((mapping) => {
           const page = output.createPageEvent(mapping);
           setState({ currentModel: page.model, currentUrl: page.url });
-          this.renderDocument(page);
+          if (page.model instanceof DeclarationReflection) {
+            writeFile(page.filename, PageTemplate(page));
+          } else {
+            if (path.basename(page.filename) === options.entryDocument) {
+              writeFile(page.filename, ReadmeTemplate(page));
+            } else {
+              writeFile(page.filename, PageTemplate(page));
+            }
+          }
           bar.tick();
         });
-        this.trigger(RendererEvent.END, output);
-      }
-
       setState(null);
     }
   }
+}
+
+export function writeFile(file: string, content: string) {
+  const basename = path.dirname(file);
+  if (!fs.existsSync(basename)) {
+    fs.mkdirSync(basename);
+  }
+  fs.writeFileSync(file, content);
 }
 
 export function getUrls(
